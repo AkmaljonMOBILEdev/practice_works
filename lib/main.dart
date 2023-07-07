@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:main_project/local/storage.dart';
+import 'package:main_project/local/shared_preference/storage.dart';
 import 'package:main_project/ui/home_screen/home_screen.dart';
 import 'package:main_project/utils/theme.dart';
 
