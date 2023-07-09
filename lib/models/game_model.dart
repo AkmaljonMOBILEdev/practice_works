@@ -29,15 +29,15 @@ class GameModel {
     return GameModel(
       id: json["id"] as int? ?? 0,
       title: json["title"] as String? ?? "",
-      thumbnail: json["thumbnail"] as String? ??"",
-      shortDescription: json["shortDescription"] as String? ??"",
-      gameUrl: json["gameUrl"] as String? ?? "",
+      thumbnail: json["thumbnail"] as String? ?? "",
+      shortDescription: json["short_description"] as String? ??"",
+      gameUrl: json["game_url"] as String? ?? "",
       genre: json["genre"] as String? ?? "",
       platform: json["platform"] as String? ?? "",
-      publisher: json["publisher"] as String? ??"",
-      developer: json["developer"] as String? ??"",
-      releaseDate: json["releaseDate"] as String? ??"",
-      freeToGame: json["freeToGame"] as String? ?? "",
+      publisher: json["publisher"] as String? ?? "",
+      developer: json["developer"] as String? ?? "",
+      releaseDate: json["release_date"] as String? ?? "",
+      freeToGame: json["freetogame_profile_url"] as String? ?? "",
     );
   }
 }

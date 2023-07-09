@@ -8,7 +8,7 @@ class ApiProvider{
     Uri uri = Uri.parse("https://www.freetogame.com/api/games");
     try{
       http.Response response = await http.get(uri);
-      if(response.statusCode==20){
+      if(response.statusCode==200){
         return UniversalResponse(
           data: (jsonDecode(response.body) as List?)
               ?.map((e) => GameModel.fromJson(e)).toList()??[]);

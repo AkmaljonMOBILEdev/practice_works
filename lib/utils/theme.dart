@@ -8,9 +8,9 @@ class AppTheme{
       scaffoldBackgroundColor: AppColors.cFFFFFF,
       appBarTheme: const AppBarTheme(
           elevation: 0,
-          backgroundColor: AppColors.cFFFFFF,
+          backgroundColor: Colors.amberAccent,
           systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: AppColors.cFFFFFF,
+              statusBarColor: Colors.amberAccent,
               statusBarBrightness: Brightness.dark,
               statusBarIconBrightness: Brightness.dark
           )
