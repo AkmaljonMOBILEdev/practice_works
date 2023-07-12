@@ -7,10 +7,10 @@ class AppTheme{
   static ThemeData lightTheme=ThemeData(
       scaffoldBackgroundColor: AppColors.cFFFFFF,
       appBarTheme: const AppBarTheme(
-          elevation: 0,
-          backgroundColor: AppColors.cFFFFFF,
+          elevation: 2,
+          backgroundColor: Colors.amber,
           systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: AppColors.cFFFFFF,
+              statusBarColor: Colors.amber,
               statusBarBrightness: Brightness.dark,
               statusBarIconBrightness: Brightness.dark
           )

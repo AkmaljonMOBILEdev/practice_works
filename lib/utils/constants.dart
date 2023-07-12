@@ -1,0 +1,1 @@
+const String baseUrlOfRegion="https://islomapi.uz/api/present/day?region";
