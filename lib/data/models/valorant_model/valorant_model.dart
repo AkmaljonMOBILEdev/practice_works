@@ -12,7 +12,8 @@ class ValorantModel {
       displayName: json["displayName"] ?? "",
       developerName: json["developerName"] ?? "",
       displayIcon: json["displayIcon"] ?? "",
-      colors: List.from(elements as String).map((e) => e as String).toList()  ,);
+      colors: List.from(json["colors"] ?? [] ) ,
+    );
   }
 
 
