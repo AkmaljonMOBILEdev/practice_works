@@ -35,7 +35,7 @@ flutter:
     - assets/svg/
 
   fonts:
-    - family: Poppins
+    - family: Montserrat
       fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Montserrat-Regular.ttf
           style: italic

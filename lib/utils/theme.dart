@@ -8,9 +8,9 @@ class AppTheme{
       scaffoldBackgroundColor: AppColors.cFFFFFF,
       appBarTheme: const AppBarTheme(
           elevation: 2,
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.white,
           systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Colors.amber,
+              statusBarColor: Colors.white,
               statusBarBrightness: Brightness.dark,
               statusBarIconBrightness: Brightness.dark
           )
@@ -59,7 +59,7 @@ class AppTheme{
               color: AppColors.c000000,
               fontSize: 22,
               fontWeight: FontWeight.w700,
-              fontFamily: 'Poppins'
+              fontFamily: 'Montserrat'
           ),
           titleMedium: TextStyle(
               color: AppColors.c000000,
