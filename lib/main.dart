@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main_project/ui/home_screen/home_screen.dart';
+import 'package:main_project/ui/new_screen.dart';
 import 'package:main_project/utils/theme.dart';
 
 import 'data/local/storage.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.light,
-          home: const HomeScreen(),
+          home: const NewScreen(),
 
         );
 
