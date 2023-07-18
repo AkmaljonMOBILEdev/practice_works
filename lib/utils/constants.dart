@@ -1,0 +1,1 @@
+const String baseUrl="api.mymemory.translated.net";
