@@ -1,22 +1,25 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:main_project/local/storage.dart';
-import 'package:main_project/ui/home_screen/home_screen.dart';
-import 'package:main_project/utils/theme.dart';
+import 'package:main_project/app_provider/holder_provider.dart';
+import 'package:main_project/app_provider/page_changer.dart';
+import 'package:main_project/ui/tab_box.dart';
+import 'package:provider/provider.dart';
 
-Future<void> main()async{
-  WidgetsFlutterBinding.ensureInitialized();
-  StorageRepository.getInstance();
+void main() {
   runApp(
-    EasyLocalization(
-        supportedLocales: const [
-          Locale('en','EN'),
-          Locale('ru','RU'),
-          Locale('uz','UZ')
-        ],
-        path: 'assets/translations',
-        fallbackLocale: const Locale('en', 'EN'),
-        child: const MyApp()),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => PageChanger(),
+          lazy: true,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => HolderProvider(),
+          lazy: true,
+        ),
+
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -25,16 +28,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light,
-      home: const HomeScreen(),
-
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
+      home: TabBox(),
     );
   }
 }
