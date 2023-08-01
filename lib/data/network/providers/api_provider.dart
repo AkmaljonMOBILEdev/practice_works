@@ -12,7 +12,7 @@ class ApiProvider{
         print("Data: ${response.body}");
         return UniversalData(
           data: (jsonDecode(response.body)["results"] as List<dynamic>?)
-              ?.map((e) => ResultsModel.fromJson(e))
+              ?.map((e) => ResultsModel.fromJson(e)).toList()??[]
         );
       }
       return UniversalData(error: "Error");
