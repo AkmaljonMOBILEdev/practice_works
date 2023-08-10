@@ -16,7 +16,6 @@ void main() {
           create: (context) => HolderProvider(),
           lazy: true,
         ),
-
       ],
       child: const MyApp(),
     ),
