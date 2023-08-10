@@ -18,20 +18,20 @@ class _HomeScreenState extends State<HomeScreen> {
   ResultsModel? user;
   bool isLoading = false;
 
-  _fetchData()async{
+  _fetchData() async {
     setState(() {
-      isLoading=true;
+      isLoading = true;
     });
     UniversalData universalData = await ApiProvider().getUserInfo();
-    if(universalData.error.isEmpty){
+    if (universalData.error.isEmpty) {
       results.addAll(universalData.data);
       user = results[0];
-
     }
     setState(() {
-      isLoading=false;
+      isLoading = false;
     });
   }
+
   @override
   void initState() {
     _fetchData();
@@ -46,34 +46,60 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("User Info"),
       ),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator(),)
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
           : Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 24.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20.h,),
-            Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(32.r),
-                child: Image.network(user?.picture ?? ""),
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(32.r),
+                      child: Image.network(user?.picture ?? ""),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  GetUserInfo(
+                      title:
+                          "${user?.name.title} ${user?.name.first} ${user?.name.last}",
+                      icon: Icons.person),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  GetUserInfo(
+                      title:
+                          "${user?.location.street.number}${user?.location.street.name}, ${user?.location.city}, ${user?.location.state}, ${user?.location.country}",
+                      icon: Icons.location_on),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  GetUserInfo(title: user?.email ?? "", icon: Icons.email),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  GetUserInfo(
+                      title:
+                          "${user?.login.username ?? ""} | ${user?.login.password ?? ""}",
+                      icon: Icons.person),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  GetUserInfo(title: user?.phone ?? "", icon: Icons.phone),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  GetUserInfo(
+                      title: "${user?.age ?? 0}", icon: Icons.date_range)
+                ],
               ),
             ),
-            SizedBox(height: 20.h,),
-            GetUserInfo(title: "${user?.name.title} ${user?.name.first} ${user?.name.last}", icon: Icons.person),
-            SizedBox(height: 8.h,),
-            GetUserInfo(title: "${user?.location.street.number}${user?.location.street.name}, ${user?.location.city}, ${user?.location.state}, ${user?.location.country}", icon: Icons.location_on),
-            SizedBox(height: 8.h,),
-            GetUserInfo(title: user?.email ?? "", icon: Icons.email),
-            SizedBox(height: 8.h,),
-            GetUserInfo(title: "${user?.login.username ?? ""} | ${user?.login.password ?? ""}", icon: Icons.person),
-            SizedBox(height: 8.h,),
-            GetUserInfo(title: user?.phone ?? "", icon: Icons.phone),
-            SizedBox(height: 8.h,),
-            GetUserInfo(title: "${user?.age ?? 0}", icon: Icons.date_range)
-          ],
-        ),
-      ),
     );
   }
 }
