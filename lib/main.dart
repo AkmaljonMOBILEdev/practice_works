@@ -1,22 +1,22 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:main_project/local/storage.dart';
+import 'package:main_project/providers/auth_provider.dart';
+import 'package:main_project/providers/user_provider.dart';
 import 'package:main_project/ui/home_screen/home_screen.dart';
-import 'package:main_project/utils/theme.dart';
+import 'package:provider/provider.dart';
 
-Future<void> main()async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  StorageRepository.getInstance();
+  Firebase.initializeApp();
+
   runApp(
-    EasyLocalization(
-        supportedLocales: const [
-          Locale('en','EN'),
-          Locale('ru','RU'),
-          Locale('uz','UZ')
-        ],
-        path: 'assets/translations',
-        fallbackLocale: const Locale('en', 'EN'),
-        child: const MyApp()),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider()),
+      ],
+      child: MyApp(),
+    ),
   );
 }
 
@@ -27,14 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light,
-      home: const HomeScreen(),
-
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
+      home: HomeScreen(),
     );
   }
 }
+
